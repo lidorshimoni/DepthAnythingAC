@@ -1,5 +1,11 @@
 <div align="center">
 <h1>Depth Anything At Any Condition</h1>
+  
+[**Boyuan Sun**](https://bbbbchan.github.io)<sup>1*</sup> · [**Modi Jin**](https://ghost233lism.github.io/)<sup>1*</sup> · [**Bowen Yin**](https://yinbow.github.io/)<sup>2</sup> · [**Qibin Hou**](https://houqb.github.io/)<sup>1&dagger;</sup>
+
+<sup>1</sup>VCIP, Nankai University
+
+*Equal contribution &emsp;&dagger;Corresponding author
 
 
 
@@ -7,8 +13,8 @@
 
 <a href="#"><img src='https://img.shields.io/badge/Paper-Coming Soon-red' alt='Paper PDF'></a>
 <a href="#"><img src='https://img.shields.io/badge/Project_Page-Coming Soon-green' alt='Project Page'></a>
-<a href="#"><img src='https://img.shields.io/badge/HuggingFace-在线体验-blue' alt='HuggingFace Demo'></a>
-<a href="#"><img src='https://img.shields.io/badge/Demo-在线演示-orange' alt='Demo'></a>
+<a href="#"><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Model-blue'></a>
+<a href="#"><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Demo-orange' alt='Demo'></a>
 </div>
 
 This work presents **Depth Anything AC**, a novel approach to robust monocular depth estimation that leverages semi-supervised learning with adaptive consistency regularization. Our method builds upon the DepthAnything architecture and introduces geometric priors and teacher-student training to achieve superior performance across diverse environmental conditions.
@@ -23,11 +29,6 @@ This work presents **Depth Anything AC**, a novel approach to robust monocular d
 ## Model Architecture
 
 ![architecture](assets/architecture.png)
-
-
-## Pre-trained Models
-
-We provide pre-trained models based on the ViT-S backbone on [Download](https://drive.google.com/drive/folders/1yjM7_V9XQlL-taoRTbMq7aoCh1-Xr-ya?usp=sharing)
 
 
 
@@ -58,6 +59,9 @@ mkdir checkpoints
 ```
 
 ## Usage
+## Pre-trained Models
+
+We provide pre-trained DepthAnythingAC based on the ViT-S backbone on [Download](https://drive.google.com/drive/folders/1yjM7_V9XQlL-taoRTbMq7aoCh1-Xr-ya?usp=sharing)
 
 ### Quick Inference
 
@@ -138,22 +142,18 @@ If you find this work useful, please consider citing:
 
 ```bibtex
 @article{depth_anything_ac,
-  title={Depth Anything AC: Semi-Supervised Robust Depth Estimation with Adaptive Consistency},
-  author={Your Name and Collaborators},
+  title={Depth Anything at Any Condition},
+  author={Sun, Boyuan and Modi Jin and Bowen Yin and Hou, Qibin},
   journal={arXiv preprint arXiv:XXXX.XXXXX},
   year={2024}
 }
 ```
 
+
 ## License
 
 This code is licensed under the [Creative Commons Attribution-NonCommercial 4.0 International](https://creativecommons.org/licenses/by-nc/4.0/) for non-commercial use only.
 Please note that any commercial use of this code requires formal permission prior to use.
-
-
-## Acknowledgements
-
-We thank the authors of [DepthAnything](https://github.com/LiheYoung/Depth-Anything) and [DepthAnything V2](https://github.com/DepthAnything/Depth-Anything-V2) for their foundational work. We also acknowledge [DINOv2](https://github.com/facebookresearch/dinov2) for the robust visual encoder, [CorrMatch](https://github.com/BBBBchan/CorrMatch) for their codebase, and [RoboDepth](https://github.com/ldkong1205/RoboDepth) for their contributions.
 
 ## Contact
 
@@ -161,4 +161,10 @@ For technical questions, please contact
 [sbysbysby123[AT]gmail.com](mailto:sbysbysby123[AT]gmail.com) , [jin_modi[AT]mail.nankai.edu.cn](mailto:jin_modi[AT]mail.nankai.edu.cn)
 
 For commercial licensing, please contact [andrewhoux@gmail.com](mailto:andrewhoux@gmail).
+
+## Acknowledgements
+
+We thank the authors of [DepthAnything](https://github.com/LiheYoung/Depth-Anything) and [DepthAnything V2](https://github.com/DepthAnything/Depth-Anything-V2) for their foundational work. We also acknowledge [DINOv2](https://github.com/facebookresearch/dinov2) for the robust visual encoder, [CorrMatch](https://github.com/BBBBchan/CorrMatch) for their codebase, and [RoboDepth](https://github.com/ldkong1205/RoboDepth) for their contributions.
+
+
 
