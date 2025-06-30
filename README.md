@@ -1,7 +1,7 @@
 <div align="center">
 <h1>Depth Anything At Any Condition</h1>
   
-[**Boyuan Sun**](https://bbbbchan.github.io)<sup>1*</sup> · [**Modi Jin**](https://ghost233lism.github.io/)<sup>1*</sup> · [**Bowen Yin**](https://yinbow.github.io/)<sup>2</sup> · [**Qibin Hou**](https://houqb.github.io/)<sup>1&dagger;</sup>
+[**Boyuan Sun**](https://bbbbchan.github.io)<sup>1*</sup> · [**Modi Jin**](https://ghost233lism.github.io/)<sup>1*</sup> · [**Bowen Yin**](https://yinbow.github.io/)<sup>1</sup> · [**Qibin Hou**](https://houqb.github.io/)<sup>1&dagger;</sup>
 
 <sup>1</sup>VCIP, Nankai University
 
