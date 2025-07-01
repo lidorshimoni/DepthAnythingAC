@@ -1,7 +1,7 @@
 #!/bin/bash
 now=$(date +"%Y%m%d_%H%M%S")
 
-config=configs/synthetic_uncertainty_unsupervised.yaml
+config=configs/depthanything_AC_vits.yaml
 unlabeled_id_path=partitions/synthetic/full/all.txt
 save_path=exp/prior
 result_path=exp/prior

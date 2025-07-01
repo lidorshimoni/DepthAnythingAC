@@ -169,7 +169,7 @@ def perturbation(path, image, cfg):
     if cfg['is_contrast']:
         if random.random() < cfg['prob_contrast']:
             corrupted = create_contrast(path, corrupted, severity_lower=cfg['severity_lower_contrast'], severity_upper=cfg['severity_upper_contrast'])
-    # Randomly select a weather effect
+
     weather_effects = []
     if cfg['is_fog']:
         weather_effects.append(('fog', cfg['prob_fog']))
@@ -189,7 +189,6 @@ def perturbation(path, image, cfg):
                 corrupted = create_snow(path, corrupted, severity_lower=cfg['severity_lower_snow'], severity_upper=cfg['severity_upper_snow'])
 
     if cfg['is_motion_blur'] and cfg['is_zoom_blur']:
-        # Randomly select a blur effect
         if random.random() < 0.5:
             if random.random() < cfg['prob_motion_blur']:
                 corrupted = create_motion_blur(path, corrupted, severity_lower=cfg['severity_lower_motion_blur'], severity_upper=cfg['severity_upper_motion_blur'])
@@ -197,7 +196,6 @@ def perturbation(path, image, cfg):
             if random.random() < cfg['prob_zoom_blur']:
                 corrupted = create_zoom_blur(path, corrupted, severity_lower=cfg['severity_lower_zoom_blur'], severity_upper=cfg['severity_upper_zoom_blur'])
     else:
-        # Execute normally when only one blur is enabled
         if cfg['is_motion_blur'] and random.random() < cfg['prob_motion_blur']:
             corrupted = create_motion_blur(path, corrupted, severity_lower=cfg['severity_lower_motion_blur'], severity_upper=cfg['severity_upper_motion_blur'])
         elif cfg['is_zoom_blur'] and random.random() < cfg['prob_zoom_blur']:
@@ -205,7 +203,7 @@ def perturbation(path, image, cfg):
     return corrupted
 
 if __name__ == "__main__":
-    cfg = yaml.load(open("configs/synthetic_uncertainty_unsupervised.yaml", "r"), Loader=yaml.FullLoader)
+    cfg = yaml.load(open("configs/depthanything_AC_vits.yaml", "r"), Loader=yaml.FullLoader)
     image = Image.open("your/path/to/image.png")
     corrupted_dark = create_dark("your/path/to/image.png",image,severity_lower=cfg['severity_lower_dark'], severity_upper=cfg['severity_upper_dark'])
     corrupted_dark.save("your/path/to/image_save.png")

@@ -279,11 +279,7 @@ class SemiDataset(Dataset):
             transforms.ToTensor(),
             transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]),
         ])(sample['img_s1'])
-        if 'uncertainty' in sample.keys():
-            sample['uncertainty'] = torch.from_numpy(np.array(sample['uncertainty'])).float() / 255.0
-        if 'pseudo_label' in sample.keys():
-            sample['pseudo_label'] = torch.from_numpy(np.array(sample['pseudo_label'])).float()
-
+        
         del sample['image']
         return sample   
 

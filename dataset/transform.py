@@ -337,10 +337,7 @@ def resize_certain(sample, short_side):
         img_enhanced = sample['image_enhanced']
     if 'depth' in sample.keys():
         mask = sample['depth']
-    if 'uncertainty' in sample.keys():
-        uncertainty = sample['uncertainty']
-    if 'pseudo_label' in sample.keys():
-        pseudo_label = sample['pseudo_label']
+    
     w, h = img.size
 
     if h < w:
@@ -363,17 +360,9 @@ def resize_certain(sample, short_side):
     if 'depth' in sample.keys():
         
         mask = mask.resize((ow, oh), Image.Resampling.NEAREST)
-    if 'uncertainty' in sample.keys():
-        uncertainty = uncertainty.resize((ow, oh), Image.Resampling.NEAREST)
-    if 'pseudo_label' in sample.keys():
-        pseudo_label = pseudo_label.resize((ow, oh), Image.Resampling.NEAREST)
     sample['image'] = img
     if 'depth' in sample.keys():
         sample['depth'] = mask
-    if 'uncertainty' in sample.keys():
-        sample['uncertainty'] = uncertainty
-    if 'pseudo_label' in sample.keys():
-        sample['pseudo_label'] = pseudo_label
     return sample
 
 def blur(img, p=0.5):

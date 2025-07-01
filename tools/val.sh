@@ -1,7 +1,7 @@
 #!/bin/bash
 now=$(date +"%Y%m%d_%H%M%S")
 
-config=configs/synthetic_uncertainty_unsupervised.yaml
+config=configs/depthanything_AC_vits.yaml
 torchrun \
     --nproc_per_node=$1 \
     --master_addr=localhost \
