@@ -62,9 +62,12 @@ Download the pre-trained checkpoints from huggingface:
 ```bash
 mkdir checkpoints
 cd checkpoints
+
 # Download depth_anything_AC_vits.pth to checkpoints/
 # (Optional) Using huggingface mirrors
 export HF_ENDPOINT=https://hf-mirror.com
+
+# download DepthAnything-AC model from huggingface
 huggingface-cli download --resume-download ghost233lism/DepthAnything-AC --local-dir ghost233lism/DepthAnything-AC
 ```
 
