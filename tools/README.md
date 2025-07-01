@@ -5,6 +5,9 @@
 This directory contains tool scripts for the Depth Anything AC project.
 
 ## Inference Script (infer.py)
+
+The inference script supports processing of both images and videos, with flexible batch processing capabilities.
+
 ### Basic Usage
 
 #### Single Image Inference
@@ -16,27 +19,55 @@ python tools/infer.py --input image.jpg --output depth.png
 python tools/infer.py --input image.jpg --output depth.png --model checkpoints/depth_anything_AC_vits.pth --encoder vits
 
 # Use different colormap
-python tools/infer.py --input image.jpg --output depth.png --colormap spectral
+python tools/infer.py --input image.jpg --output depth.png --colormap inferno
 ```
 
-#### Batch Image Inference
+#### Single Video Inference
 ```bash
-# Process entire directory
-python tools/infer.py --input images/ --output output/
+# Basic video processing
+python tools/infer.py --input video.mp4 --output depth_video.mp4
 
-# Batch processing with specified colormap
-python tools/infer.py --input dataset/images/ --output results/ --colormap inferno
+# Specify output FPS
+python tools/infer.py --input video.mp4 --output depth_video.mp4 --fps 30
+
+# Use different colormap for video
+python tools/infer.py --input video.mp4 --output depth_video.mp4 --colormap spectral
+```
+
+#### Batch Processing
+```bash
+# Process images only in a directory
+python tools/infer.py --input images/ --output output/ --mode images
+
+# Process videos only in a directory
+python tools/infer.py --input videos/ --output output/ --mode videos
+
+# Process both images and videos (default mode)
+python tools/infer.py --input media/ --output output/ --mode mixed
+
+# Recursive processing of subdirectories
+python tools/infer.py --input dataset/ --output results/ --recursive
 ```
 
 ### Parameters
 
 | Parameter | Short | Type | Default | Description |
 |-----------|-------|------|---------|-------------|
-| `--input` | `-i` | str | - | Input image path or directory (required) |
-| `--output` | `-o` | str | - | Output path (required) |
-| `--model` | `-m` | str | `checkpoints/depth_anything_AC_vits.pth` | Model weight path |
+| `--input` | `-i` | str | - | Input image/video path or directory (required) |
+| `--output` | `-o` | str | - | Output path (file or directory) (required) |
+| `--model` | `-m` | str | `checkpoints/depth_anything_v2_vits.pth` | Model weight path |
 | `--encoder` | - | str | `vits` | Encoder type (`vits`, `vitb`, `vitl`) |
-| `--colormap` | - | str | `inferno` | Colormap (`inferno`, `spectral`, `gray`) |
+| `--colormap` | - | str | `spectral` | Colormap (`inferno`, `spectral`, `gray`) |
+| `--depth_cap` | - | float | `80` | Maximum depth value for capping |
+| `--fps` | - | float | `None` | Output video FPS (defaults to input FPS) |
+| `--recursive` | `-r` | flag | `False` | Search recursively in subdirectories |
+| `--mode` | - | str | `mixed` | Processing mode (`images`, `videos`, `mixed`) |
+
+### Supported File Formats
+
+**Images**: `.jpg`, `.jpeg`, `.png`, `.bmp`, `.tiff`, `.tif`
+
+**Videos**: `.mp4`, `.avi`, `.mov`, `.mkv`, `.flv`, `.wmv`, `.webm`, `.m4v`
 
 ### Usage Examples
 
@@ -48,12 +79,36 @@ Output:
 - `result.png` - Colored depth map
 - `result_raw.npy` - Raw depth data
 
-#### Example 2: Batch Processing
+#### Example 2: Process Single Video
 ```bash
-python tools/infer.py -i photos/ -o depth_results/
+python tools/infer.py -i test_video.mp4 -o depth_video.mp4 --fps 30
 ```
-For each image in the `photos/` directory, corresponding depth maps will be generated in the `depth_results/` directory.
+Output:
+- `depth_video.mp4` - Video with depth visualization
 
+#### Example 3: Batch Process Images Only
+```bash
+python tools/infer.py -i photos/ -o depth_results/ --mode images --recursive
+```
+Recursively processes all images in the `photos/` directory and subdirectories, generating corresponding depth maps in the `depth_results/` directory.
+
+#### Example 4: Batch Process Videos Only
+```bash
+python tools/infer.py -i videos/ -o depth_videos/ --mode videos --fps 25
+```
+Processes all videos in the `videos/` directory, generating depth videos with 25 FPS output.
+
+#### Example 5: Mixed Batch Processing
+```bash
+python tools/infer.py -i media/ -o output/ --mode mixed --colormap inferno
+```
+Processes both images and videos in the `media/` directory, using inferno colormap for visualization.
+
+### Output Structure
+
+When processing directories, the output maintains the same folder structure as the input:
+- Images: `input_name_depth.png` + `input_name_depth_raw.npy`
+- Videos: `input_name_depth.mp4`
 
 ## Training Scripts
 
@@ -73,4 +128,4 @@ bash tools/val.sh [NUM_GPUS] [PORT]
 
 ---
 
-For more detailed information, please refer to the main project  [README](../README.md) documentation. 
+For more detailed information, please refer to the main project [README](../README.md) documentation. 
