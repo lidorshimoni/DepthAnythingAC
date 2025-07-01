@@ -63,7 +63,6 @@ Download the pre-trained checkpoints from huggingface:
 mkdir checkpoints
 cd checkpoints
 
-# Download depth_anything_AC_vits.pth to checkpoints/
 # (Optional) Using huggingface mirrors
 export HF_ENDPOINT=https://hf-mirror.com
 
@@ -71,7 +70,7 @@ export HF_ENDPOINT=https://hf-mirror.com
 huggingface-cli download --resume-download ghost233lism/DepthAnything-AC --local-dir ghost233lism/DepthAnything-AC
 ```
 
-We also provide the DepthAnythingAC model on Google Drive: [Download](https://drive.google.com/drive/folders/1yjM7_V9XQlL-taoRTbMq7aoCh1-Xr-ya?usp=sharing)
+We also provide the DepthAnything-AC model on Google Drive: [Download](https://drive.google.com/drive/folders/1yjM7_V9XQlL-taoRTbMq7aoCh1-Xr-ya?usp=sharing)
 
 
 ### Quick Inference
@@ -79,7 +78,7 @@ We also provide the DepthAnythingAC model on Google Drive: [Download](https://dr
 We provide the quick inference scripts for single/batch image input in `tools/`.  Please refer to [infer](./tools/README.md) for detailed information.
 
 ### Training
-We provide the full training process of Depth-Anything-AC, including consistency regularization, spatial distance extraction/constraint and wide-used Affine-Invariant Loss Function.
+We provide the full training process of DepthAnything-AC, including consistency regularization, spatial distance extraction/constraint and wide-used Affine-Invariant Loss Function.
 
 Prepare your configuration in `configs/` file and run:
 
