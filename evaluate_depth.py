@@ -16,7 +16,7 @@ from depth_anything.dpt import DepthAnything_AC
 from util.utils import  init_log
 import logging
 import pprint
-from dataset.semi_depth import SemiDataset
+from dataset.semi_depth_synthetic_uncertainty_unsupervised import SemiDataset
 from matplotlib import cm
 
 
@@ -457,6 +457,12 @@ def main():
     parser = argparse.ArgumentParser(description='Semi-Supervised Semantic Segmentation')
     parser.add_argument('--config', type=str, required=True)
     parser.add_argument('--port', default=None, type=int)
+    parser.add_argument('--dataset', type=str, required=True,
+                       choices=['kitti', 'nyu', 'sintel', 'DIODE', 'ETH3D', 'robotcar', 'nuscene', 
+                               'foggy', 'cloudy', 'rainy', 'kitti_c_fog', 'kitti_c_snow', 
+                               'kitti_c_dark', 'kitti_c_motion', 'kitti_c_gaussian', 'DA2K',
+                               'DA2K_dark', 'DA2K_snow', 'DA2K_fog', 'DA2K_blur'],
+                       help='Dataset to evaluate')
     args = parser.parse_args()
     cfg = yaml.load(open(args.config, "r"), Loader=yaml.Loader)
     logger = init_log('global', logging.INFO)
@@ -479,22 +485,40 @@ def main():
     model = torch.nn.parallel.DistributedDataParallel(model, device_ids=[local_rank],
                                                     output_device=local_rank, find_unused_parameters=True)
     
-    valset_DA2K = SemiDataset(cfg['dataset_val_DA2K'], cfg['data_root_DA2K'], 'val', cfg['crop_size_DA2K'],argu_mode=cfg['argu_mode'],cfg=cfg)
-    valsampler_DA2K = DistributedSampler(valset_DA2K)
-    valloader_DA2K = DataLoader(valset_DA2K, batch_size=1, pin_memory=True, num_workers=4,
-                               drop_last=False, sampler=valsampler_DA2K)
-
-    valset_robotcar = SemiDataset(cfg['dataset_val_robotcar'], cfg['data_root_robotcar'], 'val', cfg['crop_size_robotcar'],argu_mode=cfg['argu_mode'],cfg=cfg)
-    valsampler_robotcar = DistributedSampler(valset_robotcar)
-    valloader_robotcar = DataLoader(valset_robotcar, batch_size=1, pin_memory=True, num_workers=4,
-                               drop_last=False, sampler=valsampler_robotcar)
-
-    res_val_robotcar = evaluate(model, valloader_robotcar, cfg)
-    res_val_DA2K = evaluate_DA2K(model, valloader_DA2K, cfg)
     eval_mode = 'original'
-    if logger is not None:
-        logger.info('***** Evaluation {} ***** >>>> Metrics: {} \n'.format(eval_mode, res_val_DA2K))
-        logger.info('***** Evaluation {} ***** >>>> Metrics: {} \n'.format(eval_mode, res_val_robotcar))
+    dataset_name = args.dataset
+    
+    dataset_key = f'dataset_val_{dataset_name}' if dataset_name != 'kitti' else 'dataset_val'
+    data_root_key = f'data_root_{dataset_name}' if dataset_name != 'kitti' else 'data_root_val'
+    crop_size_key = f'crop_size_{dataset_name}' if dataset_name != 'kitti' else 'crop_size'
+    
+    if dataset_key not in cfg or data_root_key not in cfg:
+        if logger is not None:
+            logger.error(f'Dataset configuration for {dataset_name} not found in config file')
+            logger.error(f'Missing keys: {dataset_key} or {data_root_key}')
+        return
+    
+    valset = SemiDataset(cfg[dataset_key], cfg[data_root_key], 'val', 
+                        cfg[crop_size_key], argu_mode=cfg['argu_mode'], cfg=cfg)
+    valsampler = DistributedSampler(valset)
+    valloader = DataLoader(valset, batch_size=1, pin_memory=True, num_workers=4,
+                          drop_last=False, sampler=valsampler)
+    
+    if dataset_name.startswith('DA2K'):
+        result = evaluate_DA2K(model, valloader)
+        if logger is not None:
+            logger.info(f'***** Evaluation {dataset_name} {eval_mode} ***** >>>> Metrics: {result} \n')
+    else:
+        depth_min_key = f'depth_min_val_{dataset_name}' if dataset_name != 'kitti' else 'depth_min_val'
+        depth_cap_key = f'depth_cap_val_{dataset_name}' if dataset_name != 'kitti' else 'depth_cap_val'
+        
+        depth_min = cfg.get(depth_min_key, 0.1)
+        depth_max = cfg.get(depth_cap_key, 80)
+        
+        result = evaluate(model, valloader, cfg, dataset=dataset_name, 
+                         depth_min=depth_min, depth_max=depth_max)
+        if logger is not None:
+            logger.info(f'***** Evaluation {dataset_name} {eval_mode} ***** >>>> Metrics: {result} \n')
 
 
 if __name__ == '__main__':
