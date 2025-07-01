@@ -1,33 +1,36 @@
 <div align="center">
 <h1>Depth Anything At Any Condition</h1>
+  
+[**Boyuan Sun**](https://bbbbchan.github.io)<sup>1*</sup> · [**Modi Jin**](https://ghost233lism.github.io/)<sup>1*</sup> · [**Bowen Yin**](https://yinbow.github.io/)<sup>1</sup> · [**Qibin Hou**](https://houqb.github.io/)<sup>1&dagger;</sup>
+
+<sup>1</sup>VCIP, Nankai University
+
+*Equal contribution &emsp;&dagger;Corresponding author
 
 
 
 **English | [简体中文](README_zh.md)**
 
 <a href="#"><img src='https://img.shields.io/badge/Paper-Coming Soon-red' alt='Paper PDF'></a>
-<a href="https://ghost233lism.github.io/depthanything-AC-page/"><img src='https://img.shields.io/badge/Project_Page-Page-green' alt='Project Page'></a>
-<a href="https://huggingface.co/spaces/ghost233lism/DepthAnything-AC"><img src='https://img.shields.io/badge/HuggingFace-Demo-blue' alt='HuggingFace Demo'></a>
-<a href="#"><img src='https://img.shields.io/badge/Demo-ComingSonn-orange' alt='Demo'></a>
+<a href="https://ghost233lism.github.io/depthanything-AC-page/ "><img src='https://img.shields.io/badge/Project-Page-green' alt='Project Page'></a>
+<a href='https://huggingface.co/ghost233lism/DepthAnything-AC'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Model-blue'></a>
+<a href='https://huggingface.co/spaces/ghost233lism/DepthAnything-AC'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Demo-orange' alt='Demo'></a>
 </div>
 
-This work presents **Depth Anything AC**, a novel approach to robust monocular depth estimation that leverages semi-supervised learning with adaptive consistency regularization. Our method builds upon the DepthAnything architecture and introduces geometric priors and teacher-student training to achieve superior performance across diverse environmental conditions.
+**DepthAnything-AC** is a robust monocular depth estimation (MDE) model fine-tuned from [DepthAnything-V2](https://github.com/DepthAnything/Depth-Anything-V2), designed for **zero-shot depth estimation under diverse and challenging environmental conditions**, including low light, adverse weather, and sensor distortions.
+
+To address the lack of high-quality annotations in corrupted scenes, we introduce a lightweight **unsupervised consistency regularization** framework that enables training on unlabeled data. Additionally, our proposed **Spatial Distance Constraint** helps the model learn patch-level geometric relationships, enhancing semantic boundaries and fine details.
 
 ![teaser](assets/teaser.png)
 
 
 ## News
-- **2024-XX-XX:** Initial release of Depth Anything AC codebase
-- **2024-XX-XX:** Pre-trained models and evaluation benchmarks released
+- **2025-XX-XX:** Initial release of Depth Anything AC codebase
+- **2025-XX-XX:** Pre-trained models and evaluation benchmarks released
 
 ## Model Architecture
 
 ![architecture](assets/architecture.png)
-
-
-## Pre-trained Models
-
-We provide pre-trained models based on the ViT-S backbone on [Download](https://drive.google.com/drive/folders/1yjM7_V9XQlL-taoRTbMq7aoCh1-Xr-ya?usp=sharing)
 
 
 
@@ -35,7 +38,7 @@ We provide pre-trained models based on the ViT-S backbone on [Download](https://
 
 ### Requirements
 
-- Python 3.9
+- Python>=3.9
 - torch==2.3.0
 - torchvision==0.18.0
 - torchaudio==2.3.0
@@ -51,29 +54,43 @@ conda activate depth_anything_ac
 pip install -r requirements.txt
 ```
 
-Download the pre-trained checkpoints:
-```bash
-mkdir checkpoints
-# Download depth_anything_AC_vits.pth to checkpoints/
-```
+
 
 ## Usage
+### Get Depth-Anything-AC Model
+Download the pre-trained checkpoints from huggingface:
+```bash
+mkdir checkpoints
+cd checkpoints
+
+# (Optional) Using huggingface mirrors
+export HF_ENDPOINT=https://hf-mirror.com
+
+# download DepthAnything-AC model from huggingface
+huggingface-cli download --resume-download ghost233lism/DepthAnything-AC --local-dir ghost233lism/DepthAnything-AC
+```
+
+We also provide the DepthAnything-AC model on Google Drive: [Download](https://drive.google.com/drive/folders/1yjM7_V9XQlL-taoRTbMq7aoCh1-Xr-ya?usp=sharing)
+
 
 ### Quick Inference
 
-Please refer to [infer](./tools/README.md) for detailed information.
+We provide the quick inference scripts for single/batch image input in `tools/`.  Please refer to [infer](./tools/README.md) for detailed information.
 
 ### Training
+We provide the full training process of DepthAnything-AC, including consistency regularization, spatial distance extraction/constraint and wide-used Affine-Invariant Loss Function.
 
-Prepare your configuration file and run:
+Prepare your configuration in `configs/` file and run:
 
 ```bash
-bash tools/train.sh 2 25535
+bash tools/train.sh <num_gpu> <port>
 ```
 
 ### Evaluation
+We provide the direct evaluation for DA-2K, enhanced DA-2K, KITTI, NYU-D, Sintel, ETH3D, DIODE, NuScenes-Night, RobotCar-night, DS-rain/cloud/fog, KITTI-C benchmarks. You may refer to `configs/` for more details.
+
 ```bash
-bash tools/val.sh 2 25535
+bash tools/val.sh <num_gpu> <port>
 ```
 
 ## Results
@@ -138,27 +155,29 @@ If you find this work useful, please consider citing:
 
 ```bibtex
 @article{depth_anything_ac,
-  title={Depth Anything AC: Semi-Supervised Robust Depth Estimation with Adaptive Consistency},
-  author={Your Name and Collaborators},
+  title={Depth Anything at Any Condition},
+  author={Sun, Boyuan and Modi Jin and Bowen Yin and Hou, Qibin},
   journal={arXiv preprint arXiv:XXXX.XXXXX},
-  year={2024}
+  year={2025}
 }
 ```
+
 
 ## License
 
 This code is licensed under the [Creative Commons Attribution-NonCommercial 4.0 International](https://creativecommons.org/licenses/by-nc/4.0/) for non-commercial use only.
 Please note that any commercial use of this code requires formal permission prior to use.
 
+## Contact
+
+For technical questions, please contact 
+sbysbysby123[AT]gmail.com or jin_modi[AT]mail.nankai.edu.cn
+
+For commercial licensing, please contact andrewhoux[AT]gmail.com.
 
 ## Acknowledgements
 
 We thank the authors of [DepthAnything](https://github.com/LiheYoung/Depth-Anything) and [DepthAnything V2](https://github.com/DepthAnything/Depth-Anything-V2) for their foundational work. We also acknowledge [DINOv2](https://github.com/facebookresearch/dinov2) for the robust visual encoder, [CorrMatch](https://github.com/BBBBchan/CorrMatch) for their codebase, and [RoboDepth](https://github.com/ldkong1205/RoboDepth) for their contributions.
 
-## Contact
 
-For technical questions, please contact 
-[sbysbysby123[AT]gmail.com](mailto:sbysbysby123[AT]gmail.com) , [jin_modi[AT]mail.nankai.edu.cn](mailto:jin_modi[AT]mail.nankai.edu.cn)
-
-For commercial licensing, please contact [andrewhoux@gmail.com](mailto:andrewhoux@gmail).
 
