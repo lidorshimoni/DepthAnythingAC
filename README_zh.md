@@ -1,33 +1,42 @@
 <div align="center">
 <h1>Depth Anything At Any Condition</h1>
 
+[**孙博远**](https://bbbbchan.github.io)<sup>1*</sup> · [**金莫迪**](https://ghost233lism.github.io/)<sup>1*</sup> · [**尹博文**](https://yinbow.github.io/)<sup>1</sup> · [**侯淇彬**](https://houqb.github.io/)<sup>1&dagger;</sup>
+
+<sup>1</sup>南开大学 天津市视觉计算与智能感知重点实验室（VCIP）
+
+*共同第一作者 &emsp;&dagger;通讯作者
+
+
 **[English](README.md) | 简体中文**
 
-<a href="#"><img src='https://img.shields.io/badge/论文-即将发布-red' alt='Paper PDF'></a>
-<a href="https://ghost233lism.github.io/depthanything-AC-page/"><img src='https://img.shields.io/badge/项目主页-已发布-green' alt='Project Page'></a>
-<a href="https://huggingface.co/spaces/ghost233lism/DepthAnything-AC"><img src='https://img.shields.io/badge/HuggingFace-在线体验-blue' alt='HuggingFace Demo'></a>
-<a href="#"><img src='https://img.shields.io/badge/Demo-在线演示-orange' alt='Demo'></a>
+<a href="#"><img src='https://img.shields.io/badge/Paper-Coming Soon-red' alt='Paper PDF'></a>
+<a href="https://ghost233lism.github.io/depthanything-AC-page/ "><img src='https://img.shields.io/badge/Project-Page-green' alt='Project Page'></a>
+<a href='https://huggingface.co/ghost233lism/DepthAnything-AC'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Model-blue'></a>
+<a href='https://huggingface.co/spaces/ghost233lism/DepthAnything-AC'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Demo-orange' alt='Demo'></a>
 </div>
 
-本工作提出了 **Depth Anything AC**，这是一种利用自适应一致性正则化进行半监督学习的新颖单目深度估计方法。我们的方法基于DepthAnything架构，引入了几何先验和师生训练框架，在各种环境条件下实现了卓越的性能。
+**DepthAnything-AC** 是一个基于 [DepthAnything-V2](https://github.com/DepthAnything/Depth-Anything-V2) 微调的鲁棒单目深度估计（MDE）模型，专为**在各种多样化和具有挑战性的环境条件下进行零样本深度估计**而设计，包括低光照、恶劣天气和传感器失真。
+
+为了解决损坏场景中缺乏高质量标注的问题，我们引入了一个轻量级的**无监督一致性正则化**框架，使模型能够在无标签数据上进行训练。此外，我们提出的**空间距离约束**帮助模型学习补丁级几何关系，增强语义边界和精细细节。
 
 ![teaser](assets/teaser.png)
 
+
+## 新闻
+- **2025-XX-XX:** Depth Anything AC代码库初始发布
+- **2025-XX-XX:** 预训练模型和评估基准发布
 
 ## 模型架构
 
 ![architecture](assets/architecture.png)
 
 
-## 预训练模型
-
-我们提供基于ViT-S骨干网络的预训练模型[下载](https://drive.google.com/drive/folders/1yjM7_V9XQlL-taoRTbMq7aoCh1-Xr-ya?usp=sharing)：
-
 ## 安装
 
 ### 环境要求
 
-- Python 3.9
+- Python>=3.9
 - torch==2.3.0
 - torchvision==0.18.0
 - torchaudio==2.3.0
@@ -43,30 +52,42 @@ conda activate depth_anything_ac
 pip install -r requirements.txt
 ```
 
-下载预训练检查点：
+
+## 使用
+### 获取 Depth-Anything-AC 模型
+从huggingface下载预训练检查点：
 ```bash
 mkdir checkpoints
-# 下载 depth_anything_AC_vits.pth 到 checkpoints/
+cd checkpoints
+
+# (可选) 使用huggingface镜像
+export HF_ENDPOINT=https://hf-mirror.com
+
+# 从huggingface下载DepthAnything-AC模型
+huggingface-cli download --resume-download ghost233lism/DepthAnything-AC --local-dir ghost233lism/DepthAnything-AC
 ```
-## 使用
+
+我们也在Google Drive提供DepthAnything-AC模型：[下载](https://drive.google.com/drive/folders/1yjM7_V9XQlL-taoRTbMq7aoCh1-Xr-ya?usp=sharing)
 
 ### 快速推理
 
-请参考[推理](./tools/README_zh.md)获取更多信息。
+我们在 `tools/` 中提供了单张/批量图像输入的快速推理脚本。请参考[推理](./tools/README.md)获取详细信息。
 
 ### 训练
+我们提供DepthAnything-AC的完整训练过程，包括一致性正则化、空间距离提取/约束和广泛使用的仿射不变损失函数。
 
-准备配置文件并运行：
+准备你在 `configs/` 中的配置文件并运行：
 
 ```bash
-bash tools/train.sh 2 25535
+bash tools/train.sh <num_gpu> <port>
 ```
 
 ### 评估
-```bash
-bash tools/val.sh 2 25535
-```
+我们提供对DA-2K、增强DA-2K、KITTI、NYU-D、Sintel、ETH3D、DIODE、NuScenes-Night、RobotCar-night、DS-rain/cloud/fog、KITTI-C基准的直接评估。您可以参考 `configs/` 了解更多详情。
 
+```bash
+bash tools/val.sh <num_gpu> <port>
+```
 
 ## 实验结果
 
@@ -125,14 +146,14 @@ bash tools/val.sh 2 25535
 
 ## 引用
 
-如果您使用或者参考了我们的项目，欢迎您引用我们论文：
+如果您发现这项工作有用，请考虑引用：
 
 ```bibtex
 @article{depth_anything_ac,
-  title={Depth Anything AC: Semi-Supervised Robust Depth Estimation with Adaptive Consistency},
-  author={Your Name and Collaborators},
+  title={Depth Anything at Any Condition},
+  author={Sun, Boyuan and Modi Jin and Bowen Yin and Hou, Qibin},
   journal={arXiv preprint arXiv:XXXX.XXXXX},
-  year={2024}
+  year={2025}
 }
 ```
 
@@ -141,13 +162,13 @@ bash tools/val.sh 2 25535
 本代码采用[知识共享署名-非商业性使用 4.0 国际许可协议](https://creativecommons.org/licenses/by-nc/4.0/)，仅限非商业用途。
 请注意，任何商业使用本代码都需要在使用前获得正式许可。
 
-## 致谢
-
-我们感谢[DepthAnything](https://github.com/LiheYoung/Depth-Anything)和[DepthAnything V2](https://github.com/DepthAnything/Depth-Anything-V2)作者的基础性工作。我们也感谢[DINOv2](https://github.com/facebookresearch/dinov2)提供的强大视觉编码器，[CorrMatch](https://github.com/BBBBchan/CorrMatch)提供的代码库，以及[RoboDepth](https://github.com/ldkong1205/RoboDepth)的贡献。
-
 ## 联系方式
 
 如有技术问题，请联系
-[sbysbysby123[AT]gmail.com](mailto:sbysbysby123[AT]gmail.com) , [jin_modi[AT]mail.nankai.edu.cn](mailto:jin_modi[AT]mail.nankai.edu.cn)
+sbysbysby123[AT]gmail.com 或 jin_modi[AT]mail.nankai.edu.cn
 
-如需商业许可，请联系 [andrewhoux@gmail.com](mailto:andrewhoux@gmail.com) 
+如需商业许可，请联系 andrewhoux[AT]gmail.com。
+
+## 致谢
+
+我们感谢[DepthAnything](https://github.com/LiheYoung/Depth-Anything)和[DepthAnything V2](https://github.com/DepthAnything/Depth-Anything-V2)作者的基础性工作。我们也感谢[DINOv2](https://github.com/facebookresearch/dinov2)提供的强大视觉编码器，[CorrMatch](https://github.com/BBBBchan/CorrMatch)提供的代码库，以及[RoboDepth](https://github.com/ldkong1205/RoboDepth)的贡献。 
