@@ -38,7 +38,7 @@ To address the lack of high-quality annotations in corrupted scenes, we introduc
 
 ### Requirements
 
-- Python 3.9
+- Python>=3.9
 - torch==2.3.0
 - torchvision==0.18.0
 - torchaudio==2.3.0
