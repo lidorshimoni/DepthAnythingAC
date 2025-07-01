@@ -6,9 +6,9 @@
 **English | [简体中文](README_zh.md)**
 
 <a href="#"><img src='https://img.shields.io/badge/Paper-Coming Soon-red' alt='Paper PDF'></a>
-<a href="#"><img src='https://img.shields.io/badge/Project_Page-Coming Soon-green' alt='Project Page'></a>
-<a href="#"><img src='https://img.shields.io/badge/HuggingFace-在线体验-blue' alt='HuggingFace Demo'></a>
-<a href="#"><img src='https://img.shields.io/badge/Demo-在线演示-orange' alt='Demo'></a>
+<a href="https://ghost233lism.github.io/depthanything-AC-page/"><img src='https://img.shields.io/badge/Project_Page-Page-green' alt='Project Page'></a>
+<a href="https://huggingface.co/spaces/ghost233lism/DepthAnything-AC"><img src='https://img.shields.io/badge/HuggingFace-Demo-blue' alt='HuggingFace Demo'></a>
+<a href="#"><img src='https://img.shields.io/badge/Demo-ComingSonn-orange' alt='Demo'></a>
 </div>
 
 This work presents **Depth Anything AC**, a novel approach to robust monocular depth estimation that leverages semi-supervised learning with adaptive consistency regularization. Our method builds upon the DepthAnything architecture and introduces geometric priors and teacher-student training to achieve superior performance across diverse environmental conditions.

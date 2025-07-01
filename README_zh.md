@@ -4,8 +4,8 @@
 **[English](README.md) | 简体中文**
 
 <a href="#"><img src='https://img.shields.io/badge/论文-即将发布-red' alt='Paper PDF'></a>
-<a href="#"><img src='https://img.shields.io/badge/项目主页-即将发布-green' alt='Project Page'></a>
-<a href="#"><img src='https://img.shields.io/badge/HuggingFace-在线体验-blue' alt='HuggingFace Demo'></a>
+<a href="https://ghost233lism.github.io/depthanything-AC-page/"><img src='https://img.shields.io/badge/项目主页-已发布-green' alt='Project Page'></a>
+<a href="https://huggingface.co/spaces/ghost233lism/DepthAnything-AC"><img src='https://img.shields.io/badge/HuggingFace-在线体验-blue' alt='HuggingFace Demo'></a>
 <a href="#"><img src='https://img.shields.io/badge/Demo-在线演示-orange' alt='Demo'></a>
 </div>
 
