@@ -15,13 +15,13 @@ from torch.optim import AdamW
 from torch.utils.data import DataLoader
 import cv2
 import matplotlib
-from losses.depth_anything_loss import AffineInvariantLoss, AffineInvariantLossV2
+from losses.depth_anything_loss import AffineInvariantLossV2
 from depth_anything.dpt import DepthAnything_AC
 
 matplotlib.use('agg')
 import yaml
 
-from dataset.semi_depth_synthetic_uncertainty_unsupervised import SemiDataset
+from dataset.semi_depth import SemiDataset
 
 from evaluate_depth import evaluate,evaluate_DA2K
 from util.utils import count_params, init_log

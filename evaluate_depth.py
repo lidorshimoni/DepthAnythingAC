@@ -16,7 +16,7 @@ from depth_anything.dpt import DepthAnything_AC
 from util.utils import  init_log
 import logging
 import pprint
-from dataset.semi_depth_synthetic_uncertainty_unsupervised import SemiDataset
+from dataset.semi_depth import SemiDataset
 from matplotlib import cm
 
 
