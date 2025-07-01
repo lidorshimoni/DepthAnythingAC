@@ -12,9 +12,9 @@
 **English | [简体中文](README_zh.md)**
 
 <a href="#"><img src='https://img.shields.io/badge/Paper-Coming Soon-red' alt='Paper PDF'></a>
-<a href="#"><img src='https://img.shields.io/badge/Project_Page-Coming Soon-green' alt='Project Page'></a>
-<a href="#"><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Model-blue'></a>
-<a href="#"><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Demo-orange' alt='Demo'></a>
+<a href="https://ghost233lism.github.io/depthanything-AC-page/ "><img src='https://img.shields.io/badge/Project-Page-green' alt='Project Page'></a>
+<a href='https://huggingface.co/ghost233lism/DepthAnything-AC'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Model-blue'></a>
+<a href='https://huggingface.co/spaces/ghost233lism/DepthAnything-AC'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Demo-orange' alt='Demo'></a>
 </div>
 
 **DepthAnything-AC** is a robust monocular depth estimation (MDE) model fine-tuned from [DepthAnything-V2](https://github.com/DepthAnything/Depth-Anything-V2), designed for **zero-shot depth estimation under diverse and challenging environmental conditions**, including low light, adverse weather, and sensor distortions.
@@ -156,7 +156,7 @@ If you find this work useful, please consider citing:
   title={Depth Anything at Any Condition},
   author={Sun, Boyuan and Modi Jin and Bowen Yin and Hou, Qibin},
   journal={arXiv preprint arXiv:XXXX.XXXXX},
-  year={2024}
+  year={2025}
 }
 ```
 
@@ -169,9 +169,9 @@ Please note that any commercial use of this code requires formal permission prio
 ## Contact
 
 For technical questions, please contact 
-[sbysbysby123[AT]gmail.com](mailto:sbysbysby123[AT]gmail.com) , [jin_modi[AT]mail.nankai.edu.cn](mailto:jin_modi[AT]mail.nankai.edu.cn)
+sbysbysby123[AT]gmail.com or jin_modi[AT]mail.nankai.edu.cn
 
-For commercial licensing, please contact [andrewhoux@gmail.com](mailto:andrewhoux@gmail).
+For commercial licensing, please contact andrewhoux[AT]gmail.com.
 
 ## Acknowledgements
 
