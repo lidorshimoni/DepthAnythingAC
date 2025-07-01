@@ -189,12 +189,6 @@ class Resize(object):
                 sample["depth"] = cv2.resize(
                     sample["depth"], (width, height), interpolation=cv2.INTER_NEAREST
                 )
-
-            if "semseg_mask" in sample:
-                # sample["semseg_mask"] = cv2.resize(
-                #     sample["semseg_mask"], (width, height), interpolation=cv2.INTER_NEAREST
-                # )
-                sample["semseg_mask"] = F.interpolate(torch.from_numpy(sample["semseg_mask"]).float()[None, None, ...], (height, width), mode='nearest').numpy()[0, 0]
                 
             if "mask" in sample:
                 sample["mask"] = cv2.resize(
@@ -203,8 +197,6 @@ class Resize(object):
                     interpolation=cv2.INTER_NEAREST,
                 )
                 # sample["mask"] = sample["mask"].astype(bool)
-
-        # print(sample['image'].shape, sample['depth'].shape)
         return sample
 
 
