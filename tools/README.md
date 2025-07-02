@@ -2,7 +2,7 @@
 
 **English** | [中文](README_zh.md)
 
-This directory contains tool scripts for the Depth Anything AC project.
+This directory contains tool scripts for the DepthAnything-AC project.
 
 ## Inference Script (infer.py)
 
