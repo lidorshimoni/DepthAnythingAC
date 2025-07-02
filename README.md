@@ -25,8 +25,8 @@ To address the lack of high-quality annotations in corrupted scenes, we introduc
 
 
 ## News
-- **2025-XX-XX:** Initial release of Depth Anything AC codebase
-- **2025-XX-XX:** Pre-trained models and evaluation benchmarks released
+- **2025-07-02:** 🔥  The code of [DepthAnything-AC](HVision-NKU/DepthAnythingAC) is released.
+- **2025-07-02:** 🔥  The DepthAnything-AC model and evaluation benchmarks are released
 
 ## Model Architecture
 
