@@ -79,7 +79,7 @@ huggingface-cli download --resume-download ghost233lism/DepthAnything-AC --local
 准备你在 `configs/` 中的配置文件并运行：
 
 ```bash
-bash tools/train.sh <num_gpu> <port>
+bash tools/train.sh <num_gpu> <port> <dataset>
 ```
 
 ### 评估
