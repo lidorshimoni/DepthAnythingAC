@@ -90,7 +90,7 @@ bash tools/train.sh <num_gpu> <port>
 We provide the direct evaluation for DA-2K, enhanced DA-2K, KITTI, NYU-D, Sintel, ETH3D, DIODE, NuScenes-Night, RobotCar-night, DS-rain/cloud/fog, KITTI-C benchmarks. You may refer to `configs/` for more details.
 
 ```bash
-bash tools/val.sh <num_gpu> <port>
+bash tools/val.sh <num_gpu> <port> <dataset>
 ```
 
 ## Results
