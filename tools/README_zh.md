@@ -2,7 +2,7 @@
 
 [English](README.md) | **中文**
 
-本目录包含了Depth Anything AC项目的工具脚本。
+本目录包含了DepthAnything-AC项目的工具脚本。
 
 ## 推理脚本 (infer.py)
 
