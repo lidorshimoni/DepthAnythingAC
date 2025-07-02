@@ -123,7 +123,7 @@ bash tools/train.sh [GPU数量] [端口号]
 用于启动分布式评估的脚本。
 
 ```bash
-bash tools/val.sh [GPU数量] [端口号]
+bash tools/val.sh [GPU数量] [端口号] [数据集]
 ```
 
 ---
