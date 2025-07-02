@@ -25,6 +25,8 @@ To address the lack of high-quality annotations in corrupted scenes, we introduc
 
 
 ## News
+![video](assets/depthanything-AC-video.gif)
+
 - **2025-07-02:** 🔥  The code of [DepthAnything-AC](HVision-NKU/DepthAnythingAC) is released.
 - **2025-07-02:** 🔥  The DepthAnything-AC model and evaluation benchmarks are released
 

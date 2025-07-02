@@ -24,8 +24,11 @@
 
 
 ## 新闻
-- **2025-XX-XX:** DepthAnything AC代码库初始发布
-- **2025-XX-XX:** 预训练模型和评估基准发布
+
+
+![video](assets/depthanything-AC-video.gif)
+- **2025-07-02:** 🔥 DepthAnything AC代码库初始发布
+- **2025-07-02:** 🔥 预训练模型和评估基准发布
 
 ## 模型架构
 
