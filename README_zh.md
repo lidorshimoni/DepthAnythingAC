@@ -25,8 +25,9 @@
 
 ## 新闻
 
-
-![video](assets/depthanything-AC-video.gif)
+<div align="center">
+<img src="assets/depthanything-AC-video.gif" alt="video" width="100%">
+</div>
 - **2025-07-02:** 🔥 DepthAnything AC代码库初始发布
 - **2025-07-02:** 🔥 预训练模型和评估基准发布
 
