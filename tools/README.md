@@ -123,7 +123,7 @@ bash tools/train.sh [NUM_GPUS] [PORT]
 Script for launching distributed evaluation.
 
 ```bash
-bash tools/val.sh [NUM_GPUS] [PORT]
+bash tools/val.sh [NUM_GPUS] [PORT] [DATASET]
 ```
 
 ---
