@@ -36,8 +36,6 @@ To address the lack of high-quality annotations in corrupted scenes, we introduc
 
 ![architecture](assets/architecture.png)
 
-
-
 ## Installation
 
 ### Requirements
