@@ -11,7 +11,7 @@
 
 **English | [简体中文](README_zh.md)**
 
-<a href="#"><img src='https://img.shields.io/badge/Paper-Coming Soon-red' alt='Paper PDF'></a>
+<a href="https://arxiv.org/abs/2507.01634"><img src='https://img.shields.io/badge/Paper-2507.01634-red' alt='Paper PDF'></a>
 <a href="https://ghost233lism.github.io/depthanything-AC-page/ "><img src='https://img.shields.io/badge/Project-Page-green' alt='Project Page'></a>
 <a href='https://huggingface.co/ghost233lism/DepthAnything-AC'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Model-blue'></a>
 <a href='https://huggingface.co/spaces/ghost233lism/DepthAnything-AC'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Demo-orange' alt='Demo'></a>
@@ -158,10 +158,10 @@ Zero-shot evaluation results on synthetic KITTI-C corruption benchmarks, testing
 If you find this work useful, please consider citing:
 
 ```bibtex
-@article{depth_anything_ac,
+@article{sun2025depth,
   title={Depth Anything at Any Condition},
   author={Sun, Boyuan and Modi Jin and Bowen Yin and Hou, Qibin},
-  journal={arXiv preprint arXiv:XXXX.XXXXX},
+  journal={arXiv preprint arXiv:2507.01634},
   year={2025}
 }
 ```
