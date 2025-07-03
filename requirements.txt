@@ -9,3 +9,6 @@ scipy==1.13.0
 tqdm==4.66.4
 PyYAML==6.0.1
 tensorboardX==2.6.2.2
+h5py==3.11.0
+imagecorruptions==1.1.2
+
