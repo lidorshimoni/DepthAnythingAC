@@ -24,15 +24,21 @@ To address the lack of high-quality annotations in corrupted scenes, we introduc
 
 ![teaser](assets/teaser.png)
 
-
-## News
 <div align="center">
 <img src="assets/depthanything-AC-video.gif" alt="video" width="100%">
 </div>
 
+## News
+
+- **2025-07-03:** 🚀  DepthAnything-AC was ranked **#3 Paper of the Day** on [HuggingFace Daily Papers](https://huggingface.co/papers/date/2025-07-03).
+- **2025-07-03:** 🔥  The paper of [DepthAnything-AC](https://arxiv.org/abs/2507.01634) is released. 
 - **2025-07-02:** 🔥  The code of [DepthAnything-AC](HVision-NKU/DepthAnythingAC) is released.
 - **2025-07-02:** 🔥  The DepthAnything-AC model and evaluation benchmarks are released
 
+## TODO List
+- [ ] Instructions for training dataset download and process.
+- [ ] Jittor implementation of DepthAnything-AC.
+- [ ] Longer and more comprehensive video demo.
 ## Model Architecture
 
 ![architecture](assets/architecture.png)
