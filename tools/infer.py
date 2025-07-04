@@ -478,7 +478,7 @@ def main():
     parser.add_argument('--output', '-o', type=str, required=True,
                         help='Output path (file or directory)')
     parser.add_argument('--model', '-m', type=str, 
-                        default='checkpoints/depth_anything_v2_vits.pth',
+                        default='checkpoints/depth_anything_AC_vits.pth',
                         help='Model weights path')
     parser.add_argument('--encoder', type=str, default='vits',
                         choices=['vits', 'vitb', 'vitl'],
