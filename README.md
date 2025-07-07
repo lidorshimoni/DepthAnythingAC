@@ -188,5 +188,10 @@ For commercial licensing, please contact andrewhoux[AT]gmail.com.
 
 We thank the authors of [DepthAnything](https://github.com/LiheYoung/Depth-Anything) and [DepthAnything V2](https://github.com/DepthAnything/Depth-Anything-V2) for their foundational work. We also acknowledge [DINOv2](https://github.com/facebookresearch/dinov2) for the robust visual encoder, [CorrMatch](https://github.com/BBBBchan/CorrMatch) for their codebase, and [RoboDepth](https://github.com/ldkong1205/RoboDepth) for their contributions.
 
+<p align="center"> 
+<img src="https://api.star-history.com/svg?repos=HVision-NKU/DepthAnythingAC&type=Date" style="width:70%"/>
+</p>
+
+
 
 
